@@ -1,0 +1,280 @@
+/*
+  Feuille de style commune aux projets des fiches 1 à 5.
+  Personnalisation : tous les réglages sont des variables dans :root
+  ci-dessous. Changez-y les couleurs, le rayon ou les polices.
+*/
+
+/* ------------------------------------------------------------------ */
+/* Jetons de design (à personnaliser ici)                             */
+/* ------------------------------------------------------------------ */
+:root {
+  --bev-sarcelle: #0d7c70;      /* accent principal */
+  --bev-sarcelle-clair: #0f9b8e;
+  --bev-sarcelle-pale: #e9f7f5; /* fonds d'accent discrets */
+  --bev-ambre: #f0a500;         /* étoile de favori */
+
+  --bev-encre: #1a1a2e;         /* texte principal */
+  --bev-gris: #6b7280;          /* texte secondaire */
+  --bev-gris-pale: #9aa1ad;     /* légendes, indices */
+
+  --bev-fond: #eef1f5;          /* fond de page */
+  --bev-surface: #ffffff;       /* cartes et champs */
+  --bev-bordure: #e5e7eb;
+
+  --bev-danger: #dc2626;        /* erreurs */
+  --bev-succes: #166534;
+  --bev-succes-fond: #dcfce7;
+
+  --bev-rayon: 12px;
+  --bev-rayon-lg: 20px;
+  --bev-ombre: 0 14px 44px rgba(15, 23, 42, 0.12);
+
+  --bev-police: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bev-police-titre: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Entête et navigation                                               */
+/* ------------------------------------------------------------------ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--bev-bordure);
+}
+
+/* La marque « Bus en vue » posée en <strong> dans l'entête. */
+.header strong {
+  font-family: var(--bev-police-titre);
+  font-size: 1.15rem;
+  color: var(--bev-sarcelle);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Champs et boutons                                                  */
+/* ------------------------------------------------------------------ */
+.app input,
+.login input {
+  font: inherit;
+  padding: 9px 11px;
+  background: var(--bev-surface);
+  border: 1.5px solid var(--bev-bordure);
+  border-radius: var(--bev-rayon);
+  color: var(--bev-encre);
+  transition: border-color 0.15s ease;
+}
+
+.app input:focus,
+.login input:focus {
+  outline: none;
+  border-color: var(--bev-sarcelle);
+}
+
+/* Bouton par défaut : discret. */
+.app button,
+.login button {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 14px;
+  background: var(--bev-surface);
+  color: var(--bev-encre);
+  border: 1.5px solid var(--bev-bordure);
+  border-radius: var(--bev-rayon);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.app button:hover,
+.login button:hover {
+  border-color: var(--bev-sarcelle);
+}
+
+.app button:disabled,
+.login button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Action principale : le bouton de soumission (connexion, envoi). */
+.app button[type="submit"],
+.login button[type="submit"] {
+  background: linear-gradient(135deg, var(--bev-sarcelle-clair), var(--bev-sarcelle));
+  color: #fff;
+  border-color: transparent;
+}
+
+.app button[type="submit"]:hover,
+.login button[type="submit"]:hover {
+  border-color: transparent;
+  filter: brightness(1.05);
+}
+
+/* ------------------------------------------------------------------ */
+/* Liste des lignes (fiches 1 et 5)                                   */
+/* ------------------------------------------------------------------ */
+.lignes {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lignes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--bev-surface);
+  border: 1px solid var(--bev-bordure);
+  border-radius: var(--bev-rayon);
+}
+
+/* Le numéro de ligne, en pastille sarcelle. */
+.lignes li strong {
+  min-width: 34px;
+  padding: 3px 8px;
+  text-align: center;
+  background: var(--bev-sarcelle-pale);
+  color: var(--bev-sarcelle);
+  border-radius: 9px;
+  font-size: 0.85rem;
+}
+
+/* L'étoile de favori (fiche 5). */
+.lignes button {
+  border: 0;
+  background: transparent;
+  color: var(--bev-ambre);
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.lignes button:hover {
+  transform: scale(1.1);
+}
+
+/* ------------------------------------------------------------------ */
+/* Formulaire de connexion (fiches 3 et 4)                            */
+/* ------------------------------------------------------------------ */
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 320px;
+  margin: 3rem auto;
+  padding: 22px;
+  background: var(--bev-surface);
+  border: 1px solid var(--bev-bordure);
+  border-radius: var(--bev-rayon-lg);
+  box-shadow: var(--bev-ombre);
+}
+
+.login label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--bev-gris);
+}
+
+.login .erreur {
+  margin: 0;
+  color: var(--bev-danger);
+  font-size: 0.85rem;
+}
+
+.login .indice {
+  margin: 0;
+  color: var(--bev-gris-pale);
+  font-size: 0.78rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Barre d'outils (fiches 2 et 4)                                     */
+/* ------------------------------------------------------------------ */
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Messages et états                                                  */
+/* ------------------------------------------------------------------ */
+[role="alert"] {
+  color: var(--bev-danger);
+}
+
+.app p:empty {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Accessibilité                                                      */
+/* ------------------------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--bev-sarcelle);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  .lignes button:hover {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Écrans étroits                                                     */
+/* ------------------------------------------------------------------ */
+@media (max-width: 520px) {
+  .app {
+    margin: 1rem;
+    padding: 16px;
+    border-radius: var(--bev-rayon);
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Thème sombre automatique (facultatif)                              */
+/* Suit la préférence du système. Retirez ce bloc pour rester clair.  */
+/* ------------------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bev-encre: #e8e8f0;
+    --bev-gris: #b6bccb;
+    --bev-gris-pale: #8b93a3;
+    --bev-fond: #0e1117;
+    --bev-surface: #161b25;
+    --bev-bordure: #2a3142;
+    --bev-sarcelle: #5eead4;
+    --bev-sarcelle-clair: #2dd4bf;
+    --bev-sarcelle-pale: #10241f;
+    --bev-ombre: 0 14px 44px rgba(0, 0, 0, 0.45);
+  }
+  .app button[type="submit"],
+  .login button[type="submit"] {
+    color: #06251f;
+  }
+}
